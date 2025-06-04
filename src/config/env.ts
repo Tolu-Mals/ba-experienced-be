@@ -11,6 +11,9 @@ const envSchema = z.object({
   LOG_LEVEL: z
     .enum(['error', 'warn', 'info', 'http', 'verbose', 'debug', 'silly'])
     .default('debug'),
+  ETHERSCAN_API_KEY: z
+    .string()
+    .min(1, { message: 'ETHERSCAN_API_KEY is required in your .env file' }),
 });
 
 const parsedEnv = envSchema.parse(process.env);
